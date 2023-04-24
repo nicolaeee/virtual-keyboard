@@ -2,4 +2,64 @@ $bodyColor: red;
 
 body {
     background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
+.child-div__first {
+    width: 700px;
+    margin: 0 auto;
+    background-color: red;
+  }
+
+
+.child-div__second{
+    width: 900px;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 2px;
+  }
+
+  .parent-div {
+    padding-top: 240px;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 100px;
+  }
+
+  .input-field {
+    display: block;
+    width: 100%;
+    height: 200px;
+    font-size: 24px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .key-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .key {
+    font-size: 24px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .key:hover {
+    background-color: #f0f0f0;
+  }
+
+  .key:active {
+    background-color: #e0e0e0;
+  }
