@@ -10,9 +10,6 @@ firstChildDiv.classList.add('child-div__first');
 secondChildDiv.classList.add('child-div__second');
 parentDiv.classList.add('parent-div');
 
-firstChildDiv.textContent = 'This is the first child div';
-secondChildDiv.textContent = 'This is the second child div';
-
 parentDiv.appendChild(firstChildDiv);
 parentDiv.appendChild(secondChildDiv);
 
@@ -47,10 +44,14 @@ for (let i = 0; i < keyRows.length; i++) {
 
     // Add event listener for each key button
     keyButton.addEventListener("click", () => {
-      const keyValue = keyButton.getAttribute("data-key");
       inputField.focus();
-      inputField.value += keyValue;
+      if (key === "Backspace") {
+        inputField.value = inputField.value.slice(0, -1);
+      } else {
+        inputField.dispatchEvent(new KeyboardEvent("keydown", { key: key }));
+      }
     });
+
 
     rowDiv.appendChild(keyButton);
   }
@@ -62,6 +63,10 @@ for (let i = 0; i < keyRows.length; i++) {
 // Create the input field
 const inputField = document.createElement("textarea");
 inputField.classList.add("input-field");
+
+inputField.addEventListener("click", () => {
+  inputField.focus();
+});
 
 // Append the input field to the firstChildDiv
 firstChildDiv.appendChild(inputField);
@@ -75,7 +80,13 @@ function handleKeyDown(event: KeyboardEvent) {
   if (keyElement) {
     keyElement.classList.add('active');
   }
+
+  if (key === "Backspace") {
+    event.preventDefault();
+    inputField.value = inputField.value.slice(0, -1);
+  }
 }
+
 
 function handleKeyUp(event: KeyboardEvent) {
   const key = event.key;
