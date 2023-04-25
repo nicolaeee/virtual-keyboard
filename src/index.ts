@@ -47,8 +47,9 @@ for (let i = 0; i < keyRows.length; i++) {
 
     // Add event listener for each key button
     keyButton.addEventListener("click", () => {
+      const keyValue = keyButton.getAttribute("data-key");
       inputField.focus();
-      inputField.dispatchEvent(new KeyboardEvent("keydown", { key: key }));
+      inputField.value += keyValue;
     });
 
     rowDiv.appendChild(keyButton);
