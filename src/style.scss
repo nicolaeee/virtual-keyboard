@@ -14,22 +14,25 @@ body {
   }
 
 
-.child-div__second{
-    width: 900px;
+  .child-div__second{
+    width: 944px;
     margin: 0 auto;
     background-color: #a6a39c;
-    border-radius: 5px;
+    border-radius: 50px;
+    height: 309px;
+    padding: 30px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   }
 
+
   .parent-div {
-    padding-top: 240px;
     max-width: 1350px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    gap: 100px;
+    gap: 60px;
 
   }
 
@@ -46,13 +49,16 @@ body {
   .key-row {
     display: flex;
     justify-content: center;
-    gap: 10PX;
+    gap: 8PX;
   }
 
  .keyboard-container{
 display: flex;
 flex-direction: column;
-gap: 10px;
+gap: 15px;
+max-width: 1110px;
+
+
 }
 
 .key {
@@ -65,6 +71,7 @@ gap: 10px;
   background-color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  border-radius: 21px;
 }
 
 
