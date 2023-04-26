@@ -71,17 +71,18 @@ max-width: 1110px;
   background-color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  border-radius: 21px;
+  border-radius: 18px;
 }
 
 
 .key.active {
-  background-color: rosybrown;
+  background-color: #fc8a5d;
+  border-radius: 22px;
 }
 
 
 .key:hover {
-  background-color: rosybrown;
+  background-color: #faa482;
 }
 
 
