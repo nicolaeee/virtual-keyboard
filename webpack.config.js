@@ -53,7 +53,12 @@ module.exports = ({develop}) => ({
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
-
+      {
+        'import/extensions': [
+          'error',
+          'ignorePackages'
+        ],
+      },
     ]
   },
   resolve: {

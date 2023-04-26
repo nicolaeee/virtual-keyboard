@@ -1,4 +1,3 @@
-
 import './style.scss';
 
 const parentDiv = document.createElement('div');
