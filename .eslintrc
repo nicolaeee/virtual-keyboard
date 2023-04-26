@@ -1,3 +1,4 @@
+
 {
     "env": {
       "browser": true,
@@ -10,7 +11,7 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "project": "./tsconfig.json"
+      "project": "./virtual-keyboard/tsconfig.json"
     },
     "plugins": [
       "@typescript-eslint"
@@ -30,5 +31,12 @@
         "props": false
       }]
     },
-    "ignorePatterns": ["*config.js"]
+    "ignorePatterns": ["*config.js"],
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "./webpack.config.js"
+        }
+      }
+    }
   }
