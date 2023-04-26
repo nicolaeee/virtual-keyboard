@@ -43,14 +43,24 @@ for (let i = 0; i < keyRows.length; i++) {
     keyButton.setAttribute("data-key", key); // add data-key attribute
 
     // Add event listener for each key button
+    // Add event listener for each key button
     keyButton.addEventListener("click", () => {
       inputField.focus();
+      const keySymbol = keyButton.textContent;
       if (key === "Backspace") {
         inputField.value = inputField.value.slice(0, -1);
+      } else if (key === "Enter") {
+        inputField.value += "\n";
+      } else if (key === "Tab") {
+        inputField.value += "\t";
+      } else if (key === "Caps Lock" || key === "Shift" || key === "Ctrl" || key === "Alt" || key === "Win") {
+        // do nothing
       } else {
+        inputField.value += keySymbol;
         inputField.dispatchEvent(new KeyboardEvent("keydown", { key: key }));
       }
     });
+
 
 
     rowDiv.appendChild(keyButton);
@@ -84,8 +94,17 @@ function handleKeyDown(event: KeyboardEvent) {
   if (key === "Backspace") {
     event.preventDefault();
     inputField.value = inputField.value.slice(0, -1);
+  } else if (key === "ArrowUp") {
+    inputField.value += "▲";
+  } else if (key === "ArrowLeft") {
+    inputField.value += "◄";
+  } else if (key === "ArrowDown") {
+    inputField.value += "▼";
+  } else if (key === "ArrowRight") {
+    inputField.value += "►";
   }
 }
+
 
 
 function handleKeyUp(event: KeyboardEvent) {
