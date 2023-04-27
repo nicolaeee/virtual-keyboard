@@ -260,6 +260,8 @@ const keysRus = [
 const container = document.createElement('div');
 container.classList.add('keyboard-container');
 
+
+
 // define an array to store the number of buttons for each row
 const rows = [14, 14, 12, 13, 9];
 let rowIndex = 0;
@@ -283,52 +285,63 @@ keys.forEach((key) => {
   const button = document.createElement('div');
   button.classList.add('key');
 
+  // create the eng span
   const engSpan = document.createElement('span');
   engSpan.classList.add('eng');
-  engSpan.innerHTML = key.key;
+  engSpan.textContent = key.key;
   button.appendChild(engSpan);
 
+  // create the rus span
   const rusSpan = document.createElement('span');
-  rusSpan.classList.add('rus', 'hidden');
-
-  const capsDownSpan = document.createElement('span');
-  capsDownSpan.classList.add('capsDown');
-  capsDownSpan.innerHTML = key.key.toLowerCase();
-  rusSpan.appendChild(capsDownSpan);
-
-  const capsUpSpan = document.createElement('span');
-  capsUpSpan.classList.add('capsUp');
-  capsUpSpan.innerHTML = key.key.toUpperCase();
-  rusSpan.appendChild(capsUpSpan);
-
+  rusSpan.classList.add('rus');
+  rusSpan.style.display = 'none'; // hide by default
   button.appendChild(rusSpan);
 
   // handle special cases
   switch (key.code) {
     case 'Tab':
-      engSpan.innerHTML = 'Tab';
+      engSpan.textContent = 'Tab';
       break;
     case 'Backspace':
-      engSpan.innerHTML = 'Backspace';
+      engSpan.textContent = 'Backspace';
       break;
     case 'Enter':
-      engSpan.innerHTML = 'Enter';
+      engSpan.textContent = 'Enter';
       break;
     case 'CapsLock':
-      engSpan.innerHTML = 'Caps Lock';
+      engSpan.textContent = 'Caps Lock';
       break;
     case 'ShiftLeft':
     case 'ShiftRight':
-      engSpan.innerHTML = 'Shift';
+      engSpan.textContent = 'Shift';
       break;
     case 'ControlLeft':
     case 'ControlRight':
-      engSpan.innerHTML = 'Ctrl';
+      engSpan.textContent = 'Ctrl';
       break;
     case 'AltLeft':
     case 'AltRight':
-      engSpan.innerHTML = 'Alt';
+      engSpan.textContent = 'Alt';
       break;
+  }
+
+  // handle Russian keys
+  const rusKeyIndex = keysRus.findIndex((r) => r.code === key.code);
+  if (rusKeyIndex >= 0) {
+    const rusKey = keysRus[rusKeyIndex];
+
+    const capsDownSpan = document.createElement('span');
+    capsDownSpan.classList.add('capsDown');
+    capsDownSpan.textContent = rusKey.key;
+    rusSpan.appendChild(capsDownSpan);
+
+    const capsUpSpan = document.createElement('span');
+    capsUpSpan.classList.add('capsUp');
+    capsUpSpan.textContent = rusKey.key.toUpperCase();
+    rusSpan.appendChild(capsUpSpan);
+
+    // set the data-rus attribute
+    button.dataset.rus = rusKeyIndex.toString();
   }
 
   if (key.shiftKey) {
